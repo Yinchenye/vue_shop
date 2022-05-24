@@ -3,7 +3,7 @@
     <div class="login_box">
       <!-- 头像区域 -->
       <div class="ava_box">
-        <img src="../assets/logo.png" alt="" />
+        <img src="../assets/imgs/logo.png" alt="" />
       </div>
       <!-- 登录表单区域 -->
       <el-form
@@ -88,7 +88,6 @@
             // 符合表单要求就通过axios发送ajax请求
             // 将返回的信息解析赋值
             let { data: res } = await this.$http.post("login", this.form);
-            console.log(res);
             // 通过返回的状态码来判断登录是否成功
             if (res.meta.status != 200) {
               return this.$message.error("登录失败");
