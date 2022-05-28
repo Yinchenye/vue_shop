@@ -30,7 +30,9 @@
         </el-col>
         <el-col :span="10">
           <div class="grid-content bg-purple">
-            <el-button type="primary" @click="addDialogVisble = true">添加用户</el-button>
+            <el-button type="primary" @click="addDialogVisble = true"
+              >添加用户</el-button
+            >
           </div>
         </el-col>
       </el-row>
@@ -38,11 +40,16 @@
       <!-- 表格展示区域 -->
       <el-table :data="UserList" style="width: 100%" border stripe>
         <!-- 自定义序列 -->
-        <el-table-column align="center" type="index" label="序号" width="60px"> </el-table-column>
-        <el-table-column align="center" prop="username" label="姓名"> </el-table-column>
-        <el-table-column align="center" prop="email" label="邮箱"> </el-table-column>
-        <el-table-column align="center" prop="mobile" label="电话"> </el-table-column>
-        <el-table-column align="center" prop="role_name" label="角色"> </el-table-column>
+        <el-table-column align="center" type="index" label="序号" width="60px">
+        </el-table-column>
+        <el-table-column align="center" prop="username" label="姓名">
+        </el-table-column>
+        <el-table-column align="center" prop="email" label="邮箱">
+        </el-table-column>
+        <el-table-column align="center" prop="mobile" label="电话">
+        </el-table-column>
+        <el-table-column align="center" prop="role_name" label="角色">
+        </el-table-column>
         <!-- 当使用了作用域插槽之后，就不需要使用prop属性了，会被默认覆盖掉 -->
         <el-table-column align="center" label="状态">
           <!-- 这里要实现自动按钮效果，必须使用作用域插槽，获取到行的数据 -->
@@ -60,7 +67,12 @@
         <el-table-column align="center" label="操作" width="180px">
           <template v-slot:default="scoped">
             <!-- 修改按钮 -->
-            <el-tooltip effect="dark" content="修改角色" placement="top" :enterable="false">
+            <el-tooltip
+              effect="dark"
+              content="修改角色"
+              placement="top"
+              :enterable="false"
+            >
               <el-button
                 type="primary"
                 icon="el-icon-edit"
@@ -69,7 +81,12 @@
               ></el-button>
             </el-tooltip>
             <!-- 删除按钮 -->
-            <el-tooltip effect="dark" content="删除角色" placement="top" :enterable="false">
+            <el-tooltip
+              effect="dark"
+              content="删除角色"
+              placement="top"
+              :enterable="false"
+            >
               <el-button
                 type="danger"
                 icon="el-icon-share"
@@ -78,7 +95,12 @@
               ></el-button>
             </el-tooltip>
             <!-- 分配角色按钮 -->
-            <el-tooltip effect="dark" content="分配角色" placement="top" :enterable="false">
+            <el-tooltip
+              effect="dark"
+              content="分配角色"
+              placement="top"
+              :enterable="false"
+            >
               <el-button
                 type="warning"
                 icon="el-icon-s-tools"
@@ -110,7 +132,12 @@
       @close="closeDialonForm"
     >
       <!-- 添加用户对话框内容主主体区 -->
-      <el-form ref="addFormRef" :model="addForm" label-width="80px" :rules="addFormRules">
+      <el-form
+        ref="addFormRef"
+        :model="addForm"
+        label-width="80px"
+        :rules="addFormRules"
+      >
         <el-form-item label="用户名" prop="username">
           <el-input v-model="addForm.username"></el-input>
         </el-form-item>
@@ -131,7 +158,12 @@
       </span>
     </el-dialog>
     <!-- 修改角色对话框 -->
-    <el-dialog title="修改用户" :visible.sync="editDialogMsg" width="50%" @close="editClose">
+    <el-dialog
+      title="修改用户"
+      :visible.sync="editDialogMsg"
+      width="50%"
+      @close="editClose"
+    >
       <el-form
         ref="addFormUserRef"
         :rules="editUserRules"
@@ -202,7 +234,8 @@
       //               验证规则，待验证对象，验证成功失败的回调函数
       var checkmobile = (rule, value, callback) => {
         // 验证手机号的正则
-        let regEmail = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/;
+        let regEmail =
+          /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/;
         if (regEmail.test(value)) {
           // 合法的手机号
           return callback();
@@ -263,7 +296,8 @@
           ],
           mobile: [
             {
-              pattern: /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/,
+              pattern:
+                /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/,
               message: "手机号格式不正确",
               trigger: "blur",
             },
@@ -326,7 +360,9 @@
       },
       //   修改用户状态
       async changeUserState(value) {
-        let { data: res } = await this.$http.put(`users/${value.id}/state/${value.mg_state}`);
+        let { data: res } = await this.$http.put(
+          `users/${value.id}/state/${value.mg_state}`
+        );
         if (res.meta.status != 200) {
           value.mg_state = !value.mg_state;
           return this.$message.error("用户状态修改失败");
@@ -346,16 +382,20 @@
             return false;
           } else {
             // 发起添加用户的网络请求
-            let { data: res } = await this.$http.post("users", this.addForm);
+            let { data: res } = await this.$http.post(
+              "userssssss",
+              this.addForm
+            );
             if (res.meta.status != 201) {
               this.$message.error("用户创建失败");
             } else {
+              console.log(res);
               this.$message.success("用户创建成功");
             }
-            // 隐藏添加用户的对话框
-            this.addDialogVisble = false;
-            this.getUserList();
           }
+          // 隐藏添加用户的对话框
+          this.addDialogVisble = false;
+          this.getUserList();
         });
       },
       // 修改角色（通过id查询角色信息）
@@ -380,10 +420,13 @@
           if (!config) {
             return false;
           } else {
-            let { data: res } = await this.$http.put(`users/${this.editUserDialog.id}`, {
-              email: this.editUserDialog.email,
-              mobile: this.editUserDialog.mobile,
-            });
+            let { data: res } = await this.$http.put(
+              `users/${this.editUserDialog.id}`,
+              {
+                email: this.editUserDialog.email,
+                mobile: this.editUserDialog.mobile,
+              }
+            );
             if (res.meta.status != 200) {
               return this.$message.error("用户信息修改失败");
             } else {
@@ -392,9 +435,9 @@
               this.$message.success("用户信息修改成功");
             }
           }
+          // 关闭修改用户信息对话框
+          this.editDialogMsg = false;
         });
-        // 关闭修改用户信息对话框
-        this.editDialogMsg = false;
       },
       // 根据id删除用户信息
       async deleteUser(userid) {
@@ -436,9 +479,12 @@
         if (!this.selectRolesId) {
           return this.$message.error("请选择要分配的角色！");
         }
-        let { data: res } = await this.$http.put(`users/${this.userInfo.id}/role`, {
-          rid: this.selectRolesId,
-        });
+        let { data: res } = await this.$http.put(
+          `users/${this.userInfo.id}/role`,
+          {
+            rid: this.selectRolesId,
+          }
+        );
         if (res.meta.status != 200) {
           return this.$message.error("更新角色失败");
         } else {

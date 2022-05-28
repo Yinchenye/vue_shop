@@ -347,8 +347,8 @@
               this.getroulesList();
             }
           }
+          this.addDialogVisible = false;
         });
-        this.addDialogVisible = false;
       },
       // 关闭时，重置添加角色对话框
       closeAddRolesDialog() {
@@ -396,7 +396,6 @@
       // 编辑功能实现
       // 在请求前，先对表单数据进行预检验
       searchRoleDialogTrue() {
-        this.searchRoleDialogVisible = false;
         this.$refs.searchRoleRef.validate(async (valid) => {
           if (!valid) {
             return false;
@@ -415,6 +414,7 @@
               this.getroulesList();
             }
           }
+          this.searchRoleDialogVisible = false;
         });
       },
     },
