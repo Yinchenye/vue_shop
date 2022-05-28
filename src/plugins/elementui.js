@@ -28,6 +28,8 @@ import {
   Option,
   Dialog,
   MessageBox,
+  Tag,
+  Tree,
 } from "element-ui";
 Vue.component(Form.name, Form);
 Vue.component(FormItem.name, FormItem);
@@ -57,3 +59,5 @@ Vue.component(Option.name, Option);
 Vue.component(Dialog.name, Dialog);
 // 将弹框（ MessageBox.confirm）挂载到Vue原型对象中
 Vue.prototype.$confirm = MessageBox.confirm;
+Vue.component(Tag.name, Tag);
+Vue.component(Tree.name, Tree);

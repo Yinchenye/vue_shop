@@ -26,10 +26,10 @@
 | 200      | OK                    | 请求成功                                            |
 | 201      | CREATED               | 创建成功                                            |
 | 204      | DELETED               | 删除成功                                            |
-| 400      | BAD REQUEST           | 请求的地址不存在或者包含不支持的参数                |
+| 400      | BAD REQUEST           | 参数名称类型没有对上或者参数格式不正确              |
 | 401      | UNAUTHORIZED          | 未授权                                              |
 | 403      | FORBIDDEN             | 被禁止访问                                          |
-| 404      | NOT FOUND             | 请求的资源不存在                                    |
+| 404      | NOT FOUND             | 请求的地址不存在                                    |
 | 422      | Unprocesable entity   | [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误 |
 | 500      | INTERNAL SERVER ERROR | 内部错误                                            |
 |          |                       |                                                     |
