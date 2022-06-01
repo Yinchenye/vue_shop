@@ -34,6 +34,10 @@ const router = new VueRouter({
           path: "roles",
           component: () => import("../views/power/MyRoles.vue"),
         },
+        {
+          path: "categories",
+          component: () => import("../views/goods/Cate.vue"),
+        },
       ],
     },
   ],

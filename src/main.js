@@ -10,10 +10,9 @@ import router from "./router/index.js";
 Vue.use(vueRouter);
 // 引入Element-Ui文件
 import "./plugins/elementui.js";
-// import ElementUI from "element-ui";
-// import "element-ui/lib/theme-chalk/index.css";
-// Vue.use(ElementUI);
-
+// 引入vue-table-with-tree-grid文件
+import TreeTable from "vue-table-with-tree-grid";
+Vue.component("tree-table", TreeTable);
 // 引入并配置axios
 import axios from "axios";
 // 设置axios的基准路径

@@ -30,6 +30,7 @@ import {
   MessageBox,
   Tag,
   Tree,
+  Cascader,
 } from "element-ui";
 Vue.component(Form.name, Form);
 Vue.component(FormItem.name, FormItem);
@@ -61,3 +62,4 @@ Vue.component(Dialog.name, Dialog);
 Vue.prototype.$confirm = MessageBox.confirm;
 Vue.component(Tag.name, Tag);
 Vue.component(Tree.name, Tree);
+Vue.component(Cascader.name, Cascader);

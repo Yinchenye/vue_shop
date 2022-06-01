@@ -382,14 +382,10 @@
             return false;
           } else {
             // 发起添加用户的网络请求
-            let { data: res } = await this.$http.post(
-              "userssssss",
-              this.addForm
-            );
+            let { data: res } = await this.$http.post("users", this.addForm);
             if (res.meta.status != 201) {
               this.$message.error("用户创建失败");
             } else {
-              console.log(res);
               this.$message.success("用户创建成功");
             }
           }

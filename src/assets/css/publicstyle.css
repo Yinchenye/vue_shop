@@ -14,3 +14,6 @@ html,body,#app{
     margin-top:15px;
     text-align:center!important;
 }
+.el-pagination{
+    margin-top: 10px;
+}
