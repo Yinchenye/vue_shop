@@ -13,7 +13,7 @@ import "./plugins/elementui.js";
 // 引入vue-table-with-tree-grid文件
 import TreeTable from "vue-table-with-tree-grid";
 Vue.component("tree-table", TreeTable);
-// 引入并配置axios
+// // 引入并配置axios
 import axios from "axios";
 // 设置axios的基准路径
 axios.defaults.baseURL = "http://127.0.0.1:8888/api/private/v1/";

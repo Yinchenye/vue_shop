@@ -216,6 +216,15 @@
 </template>
 
 <script>
+  import {
+    getUserList,
+    changeUserState,
+    addUser,
+    editDialog,
+    editDialogTrue,
+    deleteUser,
+    setUserRoles,
+  } from "@/api/user/MyUser.js";
   export default {
     name: "MyUser",
     data() {
@@ -339,9 +348,7 @@
     methods: {
       // 获取用户数据列表
       async getUserList() {
-        let { data: res } = await this.$http.get("users", {
-          params: this.getUserInof,
-        });
+        let { data: res } = await getUserList(this.getUserInof);
         if (res.meta.status != 200) {
           return this.$message.error("获取用户列表失败");
         }
@@ -360,9 +367,7 @@
       },
       //   修改用户状态
       async changeUserState(value) {
-        let { data: res } = await this.$http.put(
-          `users/${value.id}/state/${value.mg_state}`
-        );
+        let { data: res } = await changeUserState(value.id, value.mg_state);
         if (res.meta.status != 200) {
           value.mg_state = !value.mg_state;
           return this.$message.error("用户状态修改失败");
@@ -382,7 +387,7 @@
             return false;
           } else {
             // 发起添加用户的网络请求
-            let { data: res } = await this.$http.post("users", this.addForm);
+            let { data: res } = await addUser(this.addForm);
             if (res.meta.status != 201) {
               this.$message.error("用户创建失败");
             } else {
@@ -397,7 +402,7 @@
       // 修改角色（通过id查询角色信息）
       async editDialog(userID) {
         this.editDialogMsg = true;
-        let { data: res } = await this.$http.get(`users/${userID}`);
+        let { data: res } = await editDialog(userID);
         if (res.meta.status != 200) {
           return this.$message.error("查询失败");
         } else {
@@ -416,13 +421,10 @@
           if (!config) {
             return false;
           } else {
-            let { data: res } = await this.$http.put(
-              `users/${this.editUserDialog.id}`,
-              {
-                email: this.editUserDialog.email,
-                mobile: this.editUserDialog.mobile,
-              }
-            );
+            let { data: res } = await editDialogTrue(this.editUserDialog.id, {
+              email: this.editUserDialog.email,
+              mobile: this.editUserDialog.mobile,
+            });
             if (res.meta.status != 200) {
               return this.$message.error("用户信息修改失败");
             } else {
@@ -454,7 +456,7 @@
         if (confirmResult != "confirm") {
           return this.$message.info("已取消删除");
         } else {
-          let { data: res } = await this.$http.delete(`users/${userid}`);
+          let { data: res } = await deleteUser(userid);
           if (res.meta.status != 200) {
             return this.$message.error("删除失败");
           } else {
@@ -475,12 +477,9 @@
         if (!this.selectRolesId) {
           return this.$message.error("请选择要分配的角色！");
         }
-        let { data: res } = await this.$http.put(
-          `users/${this.userInfo.id}/role`,
-          {
-            rid: this.selectRolesId,
-          }
-        );
+        let { data: res } = await setUserRoles(this.userInfo.id, {
+          rid: this.selectRolesId,
+        });
         if (res.meta.status != 200) {
           return this.$message.error("更新角色失败");
         } else {

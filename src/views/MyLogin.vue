@@ -40,6 +40,7 @@
 </template>
 
 <script>
+  import { login } from "@/api/MyLogin.js";
   export default {
     name: "MyLogin",
     data() {
@@ -87,7 +88,7 @@
           } else {
             // 符合表单要求就通过axios发送ajax请求
             // 将返回的信息解析赋值
-            let { data: res } = await this.$http.post("login", this.form);
+            let { data: res } = await login(this.form);
             // 通过返回的状态码来判断登录是否成功
             if (res.meta.status != 200) {
               return this.$message.error("登录失败");

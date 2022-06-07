@@ -64,6 +64,7 @@
 </template>
 
 <script>
+  import { home } from "@/api/MyHome.js";
   export default {
     name: "MyHome",
     data() {
@@ -88,7 +89,7 @@
       },
       // 获取所有菜单
       async getMentList() {
-        let { data: res } = await this.$http.get("menus");
+        let { data: res } = await home();
         if (res.meta.status != 200) {
           return this.$message.error(res.meta.msg);
         } else {

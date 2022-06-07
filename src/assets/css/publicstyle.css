@@ -17,3 +17,8 @@ html,body,#app{
 .el-pagination{
     margin-top: 10px;
 }
+/* 这里用来配置nprogress进度条的样式 */
+#nprogress .bar{
+    /* background-color:red !important; */
+    height: 3px !important;
+}
