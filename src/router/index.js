@@ -16,39 +16,43 @@ const router = new VueRouter({
     {
       path: "/home",
       component: () => import("../views/MyHome.vue"),
-      redirect: "/home/welcome",
+      redirect: "/welcome",
       children: [
         {
-          path: "welcome",
+          path: "/welcome",
           component: () => import("../views/MyWelcome.vue"),
         },
         {
-          path: "users",
+          path: "/users",
           component: () => import("../views/user/MyUser.vue"),
         },
         {
-          path: "rights",
+          path: "/rights",
           component: () => import("../views/power/MyRights.vue"),
         },
         {
-          path: "roles",
+          path: "/roles",
           component: () => import("../views/power/MyRoles.vue"),
         },
         {
-          path: "categories",
+          path: "/categories",
           component: () => import("../views/goods/Cate.vue"),
         },
         {
-          path: "params",
+          path: "/params",
           component: () => import("../views/goods/Params.vue"),
         },
         {
-          path: "goods",
+          path: "/goods",
           component: () => import("../views/goods/List.vue"),
         },
         {
-          path: "/home/goods/add",
+          path: "/goods/add",
           component: () => import("../views/goods/Add.vue"),
+        },
+        {
+          path: "/orders",
+          component: () => import("../views/order/Order.vue"),
         },
       ],
     },

@@ -1034,3 +1034,19 @@
 [2022-06-13T14:23:38.965] [DEBUG] cheese - admin
 [2022-06-13T14:23:39.583] [DEBUG] cheese - null
 [2022-06-13T14:23:39.584] [DEBUG] cheese - null
+[2022-06-13T15:03:23.602] [DEBUG] cheese - login => username:admin,password:123456
+[2022-06-13T15:03:23.603] [DEBUG] cheese - admin
+[2022-06-13T15:03:23.735] [DEBUG] cheese - null
+[2022-06-13T15:03:23.735] [DEBUG] cheese - null
+[2022-06-13T15:19:52.930] [DEBUG] cheese - login => username:admin,password:123456
+[2022-06-13T15:19:52.932] [DEBUG] cheese - admin
+[2022-06-13T15:19:52.935] [DEBUG] cheese - null
+[2022-06-13T15:19:52.936] [DEBUG] cheese - null
+[2022-06-13T15:28:44.758] [DEBUG] cheese - login => username:admin,password:123456
+[2022-06-13T15:28:44.758] [DEBUG] cheese - admin
+[2022-06-13T15:28:44.763] [DEBUG] cheese - null
+[2022-06-13T15:28:44.763] [DEBUG] cheese - null
+[2022-06-13T21:12:10.866] [DEBUG] cheese - login => username:admin,password:123456
+[2022-06-13T21:12:10.868] [DEBUG] cheese - admin
+[2022-06-13T21:12:10.881] [DEBUG] cheese - null
+[2022-06-13T21:12:10.882] [DEBUG] cheese - null

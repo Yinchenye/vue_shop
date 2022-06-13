@@ -41,7 +41,7 @@
 
             <!-- 二级菜单 -->
             <el-menu-item
-              :index="`/home/${submenu.path}`"
+              :index="`${submenu.path}`"
               v-for="submenu in menu.children"
               :key="submenu.id"
             >

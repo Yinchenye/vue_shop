@@ -53,25 +53,22 @@
           width="75px"
         >
         </el-table-column>
-        <el-table-column label="创建时间" align="center" width="140px">
+        <el-table-column label="创建时间" align="center" width="180px">
           <template v-slot:default="scoped">
             {{ formatTime(scoped.row.add_time) }}
           </template>
         </el-table-column>
-        <el-table-column label="操作" align="center" width="130px">
+        <el-table-column label="操作" align="center" width="190px">
           <template v-slot:default="scoped">
             <el-tooltip
               class="item"
               effect="dark"
-              content="添加分类"
+              content="编辑商品"
               placement="top-start"
             >
-              <el-button
-                type="primary"
-                icon="el-icon-edit"
-                size="small"
-                @click="addParams"
-              ></el-button>
+              <el-button type="primary" icon="el-icon-edit" size="small"
+                >编辑</el-button
+              >
             </el-tooltip>
             <el-tooltip
               class="item"
@@ -84,7 +81,8 @@
                 icon="el-icon-delete"
                 size="small"
                 @click="deleteGood(scoped.row.goods_id)"
-              ></el-button>
+                >删除</el-button
+              >
             </el-tooltip>
           </template>
         </el-table-column>
@@ -102,51 +100,19 @@
       >
       </el-pagination>
     </el-card>
-    <!-- 添加分类对话框 -->
-    <el-dialog
-      title="添加分类"
-      :visible.sync="addParamsDialogVisible"
-      width="50%"
-      @close="closeParamsDialog"
-    >
-      <el-form
-        ref="form"
-        :model="addParamsForm"
-        label-width="80px"
-        :rules="addParamRules"
-      >
-        <el-form-item label="分类名称" prop="cat_name">
-          <el-input v-model="addParamsForm.cat_name"></el-input>
-        </el-form-item>
-        <el-form-item label="父级分类">
-          <el-cascader
-            v-model="selectKey"
-            :options="this.goodsParamsData"
-            :props="addParamsFormProp"
-            @change="handleChange"
-            clearable
-            width="100%"
-          ></el-cascader>
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="addParamsDialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="addParamsTrue">确 定</el-button>
-      </span>
-    </el-dialog>
   </div>
 </template>
 
 <script>
   import { getGoodsListData, deleteGood } from "@/api/goods/List.js";
-  import { getCateLists, addCateListsTrue } from "@/api/goods/Cate.js";
+  import { getCateLists } from "@/api/goods/Cate.js";
   import dayjs from "dayjs";
   export default {
     name: "MyList",
     data() {
       return {
-        // 表格查询参数
         queryInfo: {
+          // 表格查询参数
           query: "",
           //  当前商品页数
           pagenum: 1,
@@ -161,28 +127,6 @@
         addParamsDialogVisible: false,
         // 保存商品分类数据列表
         goodsParamsData: [],
-        // 添加分类请求参数
-        addParamsForm: {
-          cat_pid: 0,
-          cat_name: "",
-          cat_level: 0,
-        },
-        // 添加分类表单验证规则
-        addParamRules: {
-          cat_name: [
-            { required: true, message: "请输入分类名称", trigger: "blur" },
-          ],
-        },
-        // 添加分类级联选择器配置项
-        addParamsFormProp: {
-          value: "cat_id",
-          label: "cat_name",
-          children: "children",
-          expandTrigger: "hover",
-          checkStrictly: true,
-        },
-        // 选中的父类分组id
-        selectKey: [],
       };
     },
     methods: {
@@ -232,23 +176,6 @@
         this.addParamsForm.cat_name = "";
         this.addParamsForm.cat_level = 0;
       },
-      // 点击确定，发送添加分类请求
-      addParamsTrue() {
-        this.$refs.form.validate(async (valid) => {
-          if (!valid) {
-            return false;
-          } else {
-            let { data: res } = await addCateListsTrue(this.addParamsForm);
-            if (res.meta.status != 201) {
-              this.$message.error("添加分类失败");
-            } else {
-              this.$message.success("添加分类成功");
-              this.getGoodsListData();
-              this.addParamsDialogVisible = false;
-            }
-          }
-        });
-      },
       // 删除对应的商品数据
       async deleteGood(goodid) {
         let confirmvalue = await this.$confirm(
@@ -274,7 +201,7 @@
       },
       // 添加商品，通过编程式路由导航跳转到添加商品页面
       addGoods() {
-        this.$router.push("/home/goods/add");
+        this.$router.push("/goods/add");
       },
     },
     mounted() {

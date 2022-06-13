@@ -66,6 +66,7 @@
         :page-size="queryInfo.pagesize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="cateTotal"
+        background
       >
       </el-pagination>
     </el-card>

@@ -121,6 +121,7 @@
         :page-size="getUserInof.pagesize"
         :total="getUserInof.TotalPage"
         layout="total, sizes, prev, pager, next, jumper"
+        background
       >
       </el-pagination>
     </el-card>
