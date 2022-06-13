@@ -34,6 +34,11 @@ import {
   Alert,
   Tabs,
   TabPane,
+  Steps,
+  Step,
+  CheckboxGroup,
+  Checkbox,
+  Upload,
 } from "element-ui";
 Vue.component(Form.name, Form);
 Vue.component(FormItem.name, FormItem);
@@ -69,3 +74,8 @@ Vue.component(Cascader.name, Cascader);
 Vue.component(Alert.name, Alert);
 Vue.component(Tabs.name, Tabs);
 Vue.component(TabPane.name, TabPane);
+Vue.component(Steps.name, Steps);
+Vue.component(Step.name, Step);
+Vue.component(CheckboxGroup.name, CheckboxGroup);
+Vue.component(Checkbox.name, Checkbox);
+Vue.component(Upload.name, Upload);

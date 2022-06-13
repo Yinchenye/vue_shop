@@ -129,6 +129,7 @@
 </template>
 
 <script>
+  import { getCateLists } from "@/api/goods/Cate.js";
   export default {
     name: "MyCate",
     data() {
@@ -225,9 +226,7 @@
     methods: {
       // 发送获取商品分类请求
       async getCateList() {
-        let { data: res } = await this.$http.get("categories", {
-          params: this.queryInfo,
-        });
+        let { data: res } = await getCateLists(this.queryInfo);
         if (res.meta.status != 200) {
           return this.$message.error("商品分类列表获取失败");
         } else {
@@ -256,9 +255,7 @@
       },
       // 发送获取父级商品分类请求
       async getParentCateList() {
-        let { data: res } = await this.$http.get("categories", {
-          params: { type: 2 },
-        });
+        let { data: res } = await getCateLists({ type: 2 });
         if (res.meta.status != 200) {
           return this.$message.error("请求失败");
         } else {

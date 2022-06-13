@@ -42,6 +42,14 @@ const router = new VueRouter({
           path: "params",
           component: () => import("../views/goods/Params.vue"),
         },
+        {
+          path: "goods",
+          component: () => import("../views/goods/List.vue"),
+        },
+        {
+          path: "/home/goods/add",
+          component: () => import("../views/goods/Add.vue"),
+        },
       ],
     },
   ],

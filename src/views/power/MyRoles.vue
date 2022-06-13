@@ -386,8 +386,8 @@
           return this.$message.error("获取角色失败");
         } else {
           this.searchRoleForm = res.data;
+          this.searchRoleDialogVisible = true;
         }
-        this.searchRoleDialogVisible = true;
       },
       // 关闭对话框时，重置表单内容
       closeSearchRoleDialog() {

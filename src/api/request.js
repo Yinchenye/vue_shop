@@ -3,7 +3,7 @@ import axios from "axios";
 import nprogress from "nprogress";
 import "nprogress/nprogress.css";
 const instance = axios.create({
-  baseURL: "https://lianghj.top:8888/api/private/v1/",
+  baseURL: "http://127.0.0.1:8888/api/private/v1/",
 });
 // 请求拦截
 instance.interceptors.request.use((config) => {
