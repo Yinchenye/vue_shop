@@ -1,7 +1,5 @@
 // 该文件管理项目中的所有路由配置
-// import Vue from "vue";
 import VueRouter from "vue-router";
-// Vue.use(VueRouter);
 import MyLogin from "../views/MyLogin.vue";
 const router = new VueRouter({
   routes: [
@@ -47,12 +45,20 @@ const router = new VueRouter({
           component: () => import("../views/goods/List.vue"),
         },
         {
+          path: "/goods/edit",
+          component: () => import("../views/goods/Edit.vue"),
+        },
+        {
           path: "/goods/add",
           component: () => import("../views/goods/Add.vue"),
         },
         {
           path: "/orders",
           component: () => import("../views/order/Order.vue"),
+        },
+        {
+          path: "/reports",
+          component: () => import("../views/report/Report.vue"),
         },
       ],
     },

@@ -32,3 +32,6 @@ html,body,#app{
 .ql-editor {
     height: 300px !important;
 }
+.el-checkbox {
+    margin: 0 10px 0 0 !important;
+}

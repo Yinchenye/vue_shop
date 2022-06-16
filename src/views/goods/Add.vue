@@ -315,9 +315,10 @@
             newAddGoods.goods_cat = newAddGoods.goods_cat.join(",");
             let { data: res } = await addGoods(newAddGoods);
             if (res.meta.status != 201) {
-              return this.$message.error("添加商品失败");
+              this.$message.error("添加商品失败");
             } else {
-              this.$router.push("/home/goods");
+              this.$router.push("/goods");
+              this.$message.success("添加商品成功");
             }
           }
         });

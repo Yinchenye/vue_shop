@@ -66,7 +66,11 @@
               content="编辑商品"
               placement="top-start"
             >
-              <el-button type="primary" icon="el-icon-edit" size="small"
+              <el-button
+                type="primary"
+                icon="el-icon-edit"
+                size="small"
+                @click="editGoods(scoped.row.goods_id)"
                 >编辑</el-button
               >
             </el-tooltip>
@@ -198,6 +202,13 @@
             this.$message.success("删除商品成功");
           }
         }
+      },
+      // 编辑商品，通过编程式路由导航跳转到编辑商品页面
+      editGoods(good_id) {
+        this.$router.push({
+          path: "/goods/edit",
+          query: { good_id },
+        });
       },
       // 添加商品，通过编程式路由导航跳转到添加商品页面
       addGoods() {

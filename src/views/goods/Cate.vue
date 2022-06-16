@@ -159,6 +159,7 @@
             // 表示这一列使用的模板名称
             template: "isok",
             headerAlign: "center",
+            align: "center",
           },
           {
             label: "排序",
