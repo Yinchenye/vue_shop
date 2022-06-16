@@ -33,7 +33,7 @@
       </el-steps>
       <!-- 标签页 -->
       <el-form
-        ref="form"
+        ref="edifFormRef"
         :model="getGoodByIdData"
         label-width="80px"
         label-position="top"
@@ -263,35 +263,41 @@
       },
       // 提交编辑
       async subemit() {
-        this.manyData.forEach((item) => {
-          const newInfo = {
-            attr_id: item.attr_id,
-            attr_value: item.attr_value.join(","),
-          };
-          this.editForm.attrs.push(newInfo);
+        this.$refs.edifFormRef.validate(async (valid) => {
+          if (!valid) {
+            this.$message.error("请填写必要参数");
+          } else {
+            this.manyData.forEach((item) => {
+              const newInfo = {
+                attr_id: item.attr_id,
+                attr_value: item.attr_value.join(","),
+              };
+              this.editForm.attrs.push(newInfo);
+            });
+            this.onlyData.forEach((item) => {
+              const newInfo = {
+                attr_id: item.attr_id,
+                attr_value: item.attr_value,
+              };
+              this.editForm.attrs.push(newInfo);
+            });
+            this.editForm.goods_cat = this.getGoodByIdData.goods_cat.join(",");
+            this.editForm.goods_name = this.getGoodByIdData.goods_name;
+            this.editForm.goods_price = this.getGoodByIdData.goods_price;
+            this.editForm.goods_weight = this.getGoodByIdData.goods_weight;
+            this.editForm.goods_number = this.getGoodByIdData.goods_number;
+            console.log(this.editForm);
+            let { data: res } = await subemit(this.goodId, this.editForm);
+            if (res.meta.status != 200) {
+              this.$message.error(res.meta.msg);
+            } else {
+              this.$message.success("商品编辑成功");
+              this.$router.push({
+                path: "/goods",
+              });
+            }
+          }
         });
-        this.onlyData.forEach((item, index) => {
-          const newInfo = {
-            attr_id: item.attr_id,
-            attr_value: item.attr_value,
-          };
-          this.editForm.attrs.push(newInfo);
-        });
-        this.editForm.goods_cat = this.getGoodByIdData.goods_cat.join(",");
-        this.editForm.goods_name = this.getGoodByIdData.goods_name;
-        this.editForm.goods_price = this.getGoodByIdData.goods_price;
-        this.editForm.goods_weight = this.getGoodByIdData.goods_weight;
-        this.editForm.goods_number = this.getGoodByIdData.goods_number;
-        console.log(this.editForm);
-        let { data: res } = await subemit(this.goodId, this.editForm);
-        if (res.meta.status != 200) {
-          this.$message.error(res.meta.msg);
-        } else {
-          this.$message.success("商品编辑成功");
-          this.$router.push({
-            path: "/goods",
-          });
-        }
       },
     },
     components: {
